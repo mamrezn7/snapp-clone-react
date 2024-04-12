@@ -11,7 +11,7 @@ L.Marker.prototype.options.icon = L.icon({
   shadowAnchor: null,
 });
 
-export default function Routing({ wayPoints }) {
+export default function Routing({ wayPoints, setDistance }) {
   const map = useMap();
   console.log(wayPoints);
 
@@ -19,10 +19,18 @@ export default function Routing({ wayPoints }) {
     if (!map) return;
     const routingControl = L.Routing.control({
       waypoints: wayPoints,
-      show: true,
+      show: false,
       autoRoute: true,
       draggableWaypoints: false,
-    }).addTo(map);
+      lineOptions: {
+        addWaypoints: false,
+      },
+    })
+      .on("routesfound", (e) => {
+        if (!e) return;
+        setDistance(e.routes[0]?.summary.totalDistance);
+      })
+      .addTo(map);
 
     return () => map.removeControl(routingControl);
   }, [map, wayPoints]);

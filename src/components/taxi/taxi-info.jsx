@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { BiMessage } from "react-icons/bi";
 import { IoCall } from "react-icons/io5";
 import { useMap } from "react-leaflet";
+import { service_type } from "../../constants/service-types";
+import { formatterService } from "../../services/formatter";
 
-const TaxiInfo = () => {
+const TaxiInfo = ({ selectedService, serviceCost }) => {
   const map = useMap();
 
   useEffect(() => {
@@ -39,6 +41,14 @@ const TaxiInfo = () => {
               <IoCall />
             </a>
           </div>
+        </div>
+      </div>
+      <div className="flex justify-between text-lg mb-2 ">
+        <div>
+          هزیه سفر: {formatterService.formatWithSeparator(serviceCost)} تومان
+        </div>
+        <div className="text-primary font-bold italic">
+          {selectedService === service_type.eco ? "اسنپ! " : "اسنپ! اکو پلاس "}
         </div>
       </div>
     </div>

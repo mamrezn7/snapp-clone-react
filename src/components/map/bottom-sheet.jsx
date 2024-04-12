@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { app_steps } from "../../constants/enums/app-steps";
 import { CustomButton, PrimaryButton } from "../shared/button";
 import { service_type } from "../../constants/service-types";
 import CountUp from "react-countup";
 import TaxiInfo from "../taxi/taxi-info";
+import { formatterService } from "../../services/formatter";
 
 const BottomSheet = ({
   selectStartPoint,
@@ -13,8 +14,18 @@ const BottomSheet = ({
   wayPoints,
   position,
   requestTaxi,
+  distance,
 }) => {
   const [selectedService, setselectedService] = useState(service_type.eco);
+  const [snappCost, setSnappCost] = useState(0);
+  const [ecoPlusCost, setEcoPlusCost] = useState(0);
+
+  useEffect(() => {
+    setSnappCost(Math.floor(distance / 1000) * 9500 + 20000);
+    setEcoPlusCost(
+      Math.floor((Math.floor(distance / 1000) * 9500 + 20000) * 1.25)
+    );
+  }, [distance]);
 
   return (
     <div
@@ -50,8 +61,9 @@ const BottomSheet = ({
                 </div>
                 <span>
                   <CountUp
-                    end={10000}
+                    end={snappCost}
                     duration={3}
+                    formattingFn={formatterService.formatWithSeparator}
                     className="text-3xl text-stone-800"
                   />{" "}
                   تومان
@@ -72,8 +84,9 @@ const BottomSheet = ({
                 </div>
                 <span>
                   <CountUp
-                    end={20000}
+                    end={ecoPlusCost}
                     duration={3}
+                    formattingFn={formatterService.formatWithSeparator}
                     className="text-3xl text-stone-800"
                   />{" "}
                   تومان
@@ -95,7 +108,12 @@ const BottomSheet = ({
         </React.Fragment>
       ) : appState === app_steps.on_the_way ? (
         <div className="px-6">
-          <TaxiInfo />
+          <TaxiInfo
+            selectedService={selectedService}
+            serviceCost={
+              selectedService === service_type.eco ? snappCost : ecoPlusCost
+            }
+          />
           <CustomButton
             className="border-red-600 border-2 py-3 w-full"
             onClick={() => {

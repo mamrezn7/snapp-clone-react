@@ -9,11 +9,17 @@ const Searching = ({ onStepChange }) => {
       className="h-dvh w-screen flex flex-col bg-white absolute"
       style={{ zIndex: "2000" }}
     >
-      <div className="flex flex-col flex-1 justify-center items-center">
+      <div className="flex flex-col flex-1 justify-center items-center text-lg">
         {" "}
         در حال جستجوی سفیر...
         <div>
-          درخواست شما به <CountUp end={24} duration={360} /> سفیر ارسال شد.
+          درخواست شما به{" "}
+          <CountUp
+            end={18}
+            duration={30}
+            onEnd={() => onStepChange(app_steps.on_the_way)}
+          />{" "}
+          سفیر ارسال شد.
         </div>
       </div>
       <div className="flex flex-row gap-3 p-6">

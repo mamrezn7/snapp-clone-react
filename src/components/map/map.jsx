@@ -10,6 +10,7 @@ function Map() {
   const [position, setPosition] = useState(() => map.getCenter());
   const [wayPoints, setWayPoints] = useState([]);
   const [appState, setAppState] = useState(app_steps.rerquest_map);
+  const [distance, setDistance] = useState(0);
 
   const onMove = useCallback(() => {
     setPosition(map.getCenter());
@@ -61,7 +62,7 @@ function Map() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Routing wayPoints={wayPoints} />
+      <Routing wayPoints={wayPoints} setDistance={setDistance} />
       <BottomSheet
         selectStartPoint={selectStartPoint}
         selectEndPoint={selectEndPoint}
@@ -71,6 +72,7 @@ function Map() {
         wayPoints={wayPoints}
         position={position}
         requestTaxi={requestTaxi}
+        distance={distance}
       />
       {appState === app_steps.searching && (
         <Searching onStepChange={setAppState} />
