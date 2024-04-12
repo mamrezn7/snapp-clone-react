@@ -40,6 +40,7 @@ function Map() {
   };
   const cancelRequest = () => {
     setWayPoints([]);
+    setAppState(app_steps.rerquest_map);
     map.zoomOut();
   };
   const requestTaxi = () => {

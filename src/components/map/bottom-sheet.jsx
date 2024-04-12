@@ -3,6 +3,7 @@ import { app_steps } from "../../constants/enums/app-steps";
 import { CustomButton, PrimaryButton } from "../shared/button";
 import { service_type } from "../../constants/service-types";
 import CountUp from "react-countup";
+import TaxiInfo from "../taxi/taxi-info";
 
 const BottomSheet = ({
   selectStartPoint,
@@ -94,10 +95,15 @@ const BottomSheet = ({
         </React.Fragment>
       ) : appState === app_steps.on_the_way ? (
         <div className="px-6">
-          سفیر در حال آمدن به سمت مبدا میباشد.
-          <PrimaryButton onClick={() => selectStartPoint(position)}>
-            ssssssssss مبدا
-          </PrimaryButton>
+          <TaxiInfo />
+          <CustomButton
+            className="border-red-600 border-2 py-3 w-full"
+            onClick={() => {
+              cancelRequest();
+            }}
+          >
+            لغو درخواست
+          </CustomButton>
         </div>
       ) : null}
     </div>
