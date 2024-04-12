@@ -19,7 +19,7 @@ export default function Routing({ wayPoints }) {
     if (!map) return;
     const routingControl = L.Routing.control({
       waypoints: wayPoints,
-      show: false,
+      show: true,
       autoRoute: true,
       draggableWaypoints: false,
     }).addTo(map);
