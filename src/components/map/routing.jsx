@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import * as L from "leaflet/dist/leaflet";
+import L from "leaflet";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
 import { useMap } from "react-leaflet";

@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import "../../../node_modules/leaflet/dist/leaflet";
-import "../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine";
 import Routing from "./routing";
 import { TileLayer, useMap } from "react-leaflet";
-import "../../../node_modules/leaflet/dist/leaflet.css";
-import "../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import { app_steps } from "../../constants/enums/app-steps";
 import Searching from "../searching";
 import BottomSheet from "./bottom-sheet";
@@ -55,7 +51,7 @@ function Map() {
     <React.Fragment>
       {wayPoints.length < 2 && (
         <img
-          src="/images/marker-icon.png"
+          src="/snapp-clone-react/images/marker-icon.png"
           alt=""
           className="absolute left-1/2 top-1/2"
           style={{ zIndex: "1000" }}

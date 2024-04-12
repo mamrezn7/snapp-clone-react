@@ -15,7 +15,11 @@ const TaxiInfo = () => {
       <span className="text-xs"> سفیر در مسیر آمدن به سمت شما میباشد.</span>
       <span className="text-sm">پراید سفید</span>
       <div className="flex flex-row justify-around items-center pb-6">
-        <img src="/images/shirazi.jpg" alt="" className="rounded-full w-16" />
+        <img
+          src="/snapp-clone-react/images/shirazi.jpg"
+          alt=""
+          className="rounded-full w-16"
+        />
         <div className="flex flex-col gap-2">
           <span className="text-base text-gray-800">
             محمدرضا حاجی امین شیرازی

@@ -81,7 +81,7 @@ const BottomSheet = ({
               </div>
               <div className="flex flex-row gap-3 px-6">
                 <CustomButton
-                  className="bg-rose-600 py-3 px-6 hover:bg-red-700"
+                  className="bg-rose-600 py-3 px-6 hover:bg-red-700 text-white"
                   onClick={cancelRequest}
                 >
                   لغو

@@ -6,7 +6,7 @@ import { app_steps } from "../constants/enums/app-steps";
 const Searching = ({ onStepChange }) => {
   return (
     <div
-      className="min-h-screen w-screen flex flex-col bg-white absolute"
+      className="h-dvh w-screen flex flex-col bg-white absolute"
       style={{ zIndex: "2000" }}
     >
       <div className="flex flex-col flex-1 justify-center items-center">
@@ -18,7 +18,7 @@ const Searching = ({ onStepChange }) => {
       </div>
       <div className="flex flex-row gap-3 p-6">
         <CustomButton
-          className="bg-rose-600 py-3 px-6 hover:bg-red-700"
+          className="bg-rose-600 py-3 px-6 hover:bg-red-700 text-white"
           onClick={() => {
             onStepChange(app_steps.rerquest_map);
           }}
