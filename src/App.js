@@ -3,13 +3,7 @@ import "./App.scss";
 import "leaflet/dist/leaflet.css";
 
 import Map from "./components/map/map";
-import { createContext, useReducer, useState } from "react";
-import { app_steps } from "./constants/enums/app-steps";
-import Searching from "./components/searching";
-
 function App() {
-  // const initialState = {app_state:app_steps.rerquest_map};
-
   return (
     <div className="App flex min-h-screen flex-col items-center justify-between">
       <MapContainer
